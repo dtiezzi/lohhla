@@ -685,7 +685,7 @@ if(mapping.step){
       normalName <- BAMid
     }
 
-    print(BAMid)
+    print(paste("BAM ID: ", BAMid, sep=""))
     
     regionDir <- paste(workDir, '/', BAMid, sep = '')
     if(!dir.exists(regionDir))
