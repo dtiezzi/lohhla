@@ -14,45 +14,45 @@
 
 library(optparse)
 option_list = list(
-  make_option(c("-id", "--patientId"), type="character", default=NULL,   ## this argument is meant to be required
+  make_option("--patientId", type="character", default=NULL,   ## this argument is meant to be required
               help="patient ID", metavar="character"),
-  make_option(c("-o", "--outputDir"), type="character", default=NULL, 
+  make_option("--outputDir", type="character", default=NULL, 
               help="location of output directory", metavar="character"),
-  make_option(c("-nBAM", "--normalBAMfile"), type="character", default=NULL,    
+  make_option("--normalBAMfile", type="character", default=NULL,    
               help="normal BAM file\n\t\tcan be FALSE to run without normal sample", metavar="character"),
-  make_option(c("-tBAM", "--tumorBAMfile"), type="character", default=NULL,    
+  make_option("--tumorBAMfile", type="character", default=NULL,    
               help="tumor BAM file", metavar="character"),
-  make_option(c("-hla", "--hlaPath"), type="character", default=NULL, 
+  make_option("--hlaPath", type="character", default=NULL, 
               help="location to patient HLA calls", metavar="character"),
-  make_option(c("-hlaLoc", "--HLAfastaLoc"), type="character", default='~/lohhla/data/hla_all.fasta', 
+  make_option("--HLAfastaLoc", type="character", default='~/lohhla/data/hla_all.fasta', 
               help="location of HLA FASTA [default= %default]", metavar="character"),
-  make_option(c("-cn", "--CopyNumLoc"), type="character", default="FALSE", 
+  make_option("--CopyNumLoc", type="character", default="FALSE", 
               help="location to patient purity and ploidy output\n\t\tcan be FALSE to only estimate allelic imbalance", metavar="character"),
-  make_option(c("-ov", "--overrideDir"), type="character", default='FALSE', 
+  make_option("--overrideDir", type="character", default='FALSE', 
               help="location of flagstat information if already run [default= %default]", metavar="character"),
-  make_option(c("-mc", "--minCoverageFilter"), type="numeric", default=30,
+  make_option("--minCoverageFilter", type="numeric", default=30,
               help="minimum coverage at mismatch site [default= %default]", metavar="character"),
-  make_option(c("-kmer", "--kmerSize"), type="numeric", default=50, 
+  make_option("--kmerSize", type="numeric", default=50, 
               help="size of kmers to fish with [default= %default]", metavar="character"),
-  make_option(c("-mm", "--numMisMatch"), type="numeric", default=1, 
+  make_option("--numMisMatch", type="numeric", default=1, 
               help="number of mismatches allowed in read to map to HLA allele [default= %default]", metavar="character"),
-  make_option(c("-ms", "--mappingStep"), type="logical", default=TRUE, 
+  make_option("--mappingStep", type="logical", default=TRUE, 
               help="does mapping to HLA alleles need to be done [default= %default]", metavar="character"),
-  make_option(c("-fs", "--fishingStep"), type="logical", default=TRUE, 
+  make_option("--fishingStep", type="logical", default=TRUE, 
               help="if mapping is performed, also look for fished reads matching kmers of size kmerSize [default= %default]", metavar="character"),
-  make_option(c("-ps", "--plottingStep"), type="logical", default=TRUE, 
+  make_option("--plottingStep", type="logical", default=TRUE, 
               help="are plots made [default= %default]", metavar="character"),
-  make_option(c("-cs", "--coverageStep"), type="logical", default=TRUE, 
+  make_option("--coverageStep", type="logical", default=TRUE, 
             help="are coverage differences analyzed [default= %default]", metavar="character"),
-  make_option(c("-cu", "--cleanUp"), type="logical", default=TRUE,            
+  make_option("--cleanUp", type="logical", default=TRUE,            
               help="remove temporary files [default= %default]", metavar="character"),
-  make_option(c("-no", "--novoDir"), type="character", default='', 
+  make_option("--novoDir", type="character", default='', 
               help="path to novoalign executable [default= %default]", metavar="character"),
-  make_option(c("-ga", "--gatkDir"), type="character", default='', 
+  make_option("--gatkDir", type="character", default='', 
               help="path to GATK executable [default= %default]", metavar="character"),
-  make_option(c("-ex", "--HLAexonLoc"), type="character", default='~/lohhla/data/hla.dat', 
+  make_option("--HLAexonLoc", type="character", default='~/lohhla/data/hla.dat', 
               help="HLA exon boundaries for plotting [default= %default]", metavar="character"),
-  make_option(c("-w", "--ignoreWarnings"), type="logical", default=TRUE, 
+  make_option("--ignoreWarnings", type="logical", default=TRUE, 
               help="continue running with warnings [default= %default]", metavar="character")
 )
 
@@ -272,7 +272,7 @@ get.partially.matching.reads <- function(workDir, regionDir, BAMfile){
   system(cmd)
 
   # convert to fastq
-  cmd <- paste('java -jar ', GATKDir, '/SamToFastq.jar I=', regionDir, '/fished.sam F=', regionDir, '/fished.1.fastq F2=', regionDir, '/fished.2.fastq VALIDATION_STRINGENCY=SILENT', sep = '')
+  cmd <- paste('java -jar ', GATKDir, ' picard.jar SamToFastq I=', regionDir, '/fished.sam F=', regionDir, '/fished.1.fastq F2=', regionDir, '/fished.2.fastq VALIDATION_STRINGENCY=SILENT', sep = '')
   system(cmd)
 
 }
@@ -754,7 +754,7 @@ if(mapping.step){
     
     # turn into fastq -- this step has an error with unpaired mates, but seems to work ok just the same (VALIDATION_STRINGENCY=SILENT)
     write.table(paste('\nturn into fastq at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
-    samToFastQ <- paste("java -jar ",GATKDir,"/SamToFastq.jar ","I=",regionDir,"/",BAMid,".chr6region.sam"," F=",regionDir,"/",BAMid,".chr6region.1.fastq"," F2=",regionDir,"/",BAMid,".chr6region.2.fastq"," VALIDATION_STRINGENCY=SILENT",sep="")
+    samToFastQ <- paste("java -jar ",GATKDir," picard.jar SamToFastq ","I=",regionDir,"/",BAMid,".chr6region.sam"," F=",regionDir,"/",BAMid,".chr6region.1.fastq"," F2=",regionDir,"/",BAMid,".chr6region.2.fastq"," VALIDATION_STRINGENCY=SILENT",sep="")
     write.table(samToFastQ, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samToFastQ)
 
@@ -783,7 +783,7 @@ if(mapping.step){
     system(convertToBam)
     
     # sort
-    sortBAM <- paste("java -jar ",GATKDir,"/SortSam.jar"," I=",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.bam'," ","O=",regionDir,"/",BAMid,".chr6region.patient.reference.hlas.csorted.bam", " SORT_ORDER=coordinate",sep="")
+    sortBAM <- paste("java -jar ",GATKDir," picard.jar SortSam"," I=",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.bam'," ","O=",regionDir,"/",BAMid,".chr6region.patient.reference.hlas.csorted.bam", " SORT_ORDER=coordinate",sep="")
     write.table(sortBAM, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(sortBAM)
     
@@ -823,7 +823,7 @@ if(mapping.step){
       # and filter out reads that have too many events -- has to be done here because some reads map to multiple alleles
       passed.reads <- count.events(paste(regionDir, '/', BAMid, '.type.', allele, '.bam', sep = ''), n = numMisMatch)
       write.table(passed.reads, file = paste(regionDir, '/', BAMid, '.', allele, '.passed.reads.txt', sep = ''), sep = '\t', quote = FALSE, row.names = FALSE, col.names = FALSE)
-      extractCMD <- paste("java -jar ",GATKDir,"/FilterSamReads.jar ", "I=",  regionDir, '/', BAMid, '.type.', allele, '.bam' , " FILTER=includeReadList READ_LIST_FILE=", regionDir, "/", BAMid, '.', allele, ".passed.reads.txt", ' OUTPUT=', regionDir, '/', BAMid, '.type.', allele, '.filtered.bam', sep = '')
+      extractCMD <- paste("java -jar ",GATKDir," picard.jar FilterSamReads ", "I=",  regionDir, '/', BAMid, '.type.', allele, '.bam' , " FILTER=includeReadList READ_LIST_FILE=", regionDir, "/", BAMid, '.', allele, ".passed.reads.txt", ' OUTPUT=', regionDir, '/', BAMid, '.type.', allele, '.filtered.bam', sep = '')
       write.table(extractCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
       system(extractCMD)
 
