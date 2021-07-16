@@ -581,7 +581,7 @@ document.params(params, log.name)
 ## BAMfiles  <- list.files(tumorBAMfile, pattern = '.bam$')
 
 BAMfiles  <- c(tumorBAMfile, normalBAMfile)
-
+print(c("[INFO]", BAMfiles))
 
 ## if(length(BAMfiles)<1)
 ## {
