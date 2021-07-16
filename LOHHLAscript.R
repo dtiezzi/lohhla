@@ -581,7 +581,6 @@ document.params(params, log.name)
 ## BAMfiles  <- list.files(tumorBAMfile, pattern = '.bam$')
 
 BAMfiles  <- c(tumorBAMfile, normalBAMfile)
-print(c("[INFO]", BAMfiles))
 
 ## if(length(BAMfiles)<1)
 ## {
@@ -664,6 +663,7 @@ if(mapping.step){
   write.table(paste('\nnix file for patient reference fasta at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
   novoindexCMD <- paste('novoindex ', workDir, '/', full.patient, '.patient.hlaFasta.nix', ' ', workDir, '/', full.patient, '.patient.hlaFasta.fa', sep = '')
   write.table(novoindexCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
+  print(c("[INFO]", novoindexCMD))
   system(novoindexCMD)
 
   if(fishing.step){
