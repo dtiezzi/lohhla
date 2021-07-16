@@ -684,10 +684,9 @@ if(mapping.step){
     if(paste(BAMfile, sep = '') == normalBAMfile){
       normalName <- BAMid
     }
-
-    print(paste("BAM ID: ", BAMid, sep=""))
     
     regionDir <- paste(workDir, '/', BAMid, sep = '')
+    print(paste("BAM ID: ", BAMid, " RegionDir: ", regionDir, sep=""))
     if(!dir.exists(regionDir))
     {
       dir.create(regionDir, recursive=TRUE)
