@@ -661,7 +661,7 @@ if(mapping.step){
 
   # nix file for patient reference fasta -- novoalign
   write.table(paste('\nnix file for patient reference fasta at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
-  novoindexCMD <- paste(NOVODir, 'novoindex ', workDir, '/', full.patient, '.patient.hlaFasta.nix', ' ', workDir, '/', full.patient, '.patient.hlaFasta.fa', sep = '')
+  novoindexCMD <- paste(NOVODir, '/novoindex ', workDir, '/', full.patient, '.patient.hlaFasta.nix', ' ', workDir, '/', full.patient, '.patient.hlaFasta.fa', sep = '')
   write.table(novoindexCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
   print(c("[INFO]", novoindexCMD))
   system(novoindexCMD)
