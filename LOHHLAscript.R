@@ -272,7 +272,7 @@ get.partially.matching.reads <- function(workDir, regionDir, BAMfile){
   system(cmd)
 
   # convert to fastq
-  cmd <- paste('java -jar ', GATKDir, 'picard.jar SamToFastq I=', regionDir, '/fished.sam F=', regionDir, '/fished.1.fastq F2=', regionDir, '/fished.2.fastq VALIDATION_STRINGENCY=SILENT', sep = '')
+  cmd <- paste('java -jar ', GATKDir, '/picard.jar SamToFastq I=', regionDir, '/fished.sam F=', regionDir, '/fished.1.fastq F2=', regionDir, '/fished.2.fastq VALIDATION_STRINGENCY=SILENT', sep = '')
   system(cmd)
 
 }
@@ -754,7 +754,7 @@ if(mapping.step){
     
     # turn into fastq -- this step has an error with unpaired mates, but seems to work ok just the same (VALIDATION_STRINGENCY=SILENT)
     write.table(paste('\nturn into fastq at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
-    samToFastQ <- paste("java -jar ",GATKDir,"picard.jar SamToFastq ","I=",regionDir,"/",BAMid,".chr6region.sam"," F=",regionDir,"/",BAMid,".chr6region.1.fastq"," F2=",regionDir,"/",BAMid,".chr6region.2.fastq"," VALIDATION_STRINGENCY=SILENT",sep="")
+    samToFastQ <- paste("java -jar ",GATKDir,"/picard.jar SamToFastq ","I=",regionDir,"/",BAMid,".chr6region.sam"," F=",regionDir,"/",BAMid,".chr6region.1.fastq"," F2=",regionDir,"/",BAMid,".chr6region.2.fastq"," VALIDATION_STRINGENCY=SILENT",sep="")
     write.table(samToFastQ, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samToFastQ)
 
@@ -783,7 +783,7 @@ if(mapping.step){
     system(convertToBam)
     
     # sort
-    sortBAM <- paste("java -jar ",GATKDir,"picard.jar SortSam"," I=",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.bam'," ","O=",regionDir,"/",BAMid,".chr6region.patient.reference.hlas.csorted.bam", " SORT_ORDER=coordinate",sep="")
+    sortBAM <- paste("java -jar ",GATKDir,"/picard.jar SortSam"," I=",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.bam'," ","O=",regionDir,"/",BAMid,".chr6region.patient.reference.hlas.csorted.bam", " SORT_ORDER=coordinate",sep="")
     write.table(sortBAM, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(sortBAM)
     
@@ -823,7 +823,7 @@ if(mapping.step){
       # and filter out reads that have too many events -- has to be done here because some reads map to multiple alleles
       passed.reads <- count.events(paste(regionDir, '/', BAMid, '.type.', allele, '.bam', sep = ''), n = numMisMatch)
       write.table(passed.reads, file = paste(regionDir, '/', BAMid, '.', allele, '.passed.reads.txt', sep = ''), sep = '\t', quote = FALSE, row.names = FALSE, col.names = FALSE)
-      extractCMD <- paste("java -jar ",GATKDir,"picard.jar FilterSamReads ", "I=",  regionDir, '/', BAMid, '.type.', allele, '.bam' , " FILTER=includeReadList READ_LIST_FILE=", regionDir, "/", BAMid, '.', allele, ".passed.reads.txt", ' OUTPUT=', regionDir, '/', BAMid, '.type.', allele, '.filtered.bam', sep = '')
+      extractCMD <- paste("java -jar ",GATKDir,"/picard.jar FilterSamReads ", "I=",  regionDir, '/', BAMid, '.type.', allele, '.bam' , " FILTER=includeReadList READ_LIST_FILE=", regionDir, "/", BAMid, '.', allele, ".passed.reads.txt", ' OUTPUT=', regionDir, '/', BAMid, '.type.', allele, '.filtered.bam', sep = '')
       write.table(extractCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
       system(extractCMD)
 
