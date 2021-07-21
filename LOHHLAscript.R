@@ -674,7 +674,7 @@ if(mapping.step){
   for(BAMfile in BAMfiles){
     
     #BAMid <- unlist(strsplit(BAMfile, split = '.bam'))[1]
-    BAMid <- stringr::str_sub(dplyr::last(unlist(strsplit(l[1], split = '/'))),1, -5)
+    BAMid <- stringr::str_sub(dplyr::last(unlist(strsplit(BAMfile[1], split = '/'))),1, -5)
     ## I have no idea why this is used here...
 
     ## if(paste(BAMDir, '/', BAMfile, sep = '') == normalBAMfile){
