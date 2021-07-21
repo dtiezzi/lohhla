@@ -1,0 +1,24 @@
+
+extract HLA possible reads from BAM file at Wed Jul 21 17:33:30 2021
+
+samtools view -H /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam > ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6:29909037-29913661 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6:31321649-31324964 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6:31236526-31239869 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6_apd_hap1 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6_cox_hap2 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6_dbb_hap3 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6_mann_hap4 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6_mcf_hap5 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6_qbl_hap6 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+samtools view /home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam 6_ssto_hap7 >> ./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam
+
+turn into fastq at Wed Jul 21 17:33:30 2021
+
+java -jar /home/dtiezzi/Softwares/picard/build/libs/picard.jar SamToFastq I=./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.sam F=./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.1.fastq F2=./outDir//home/dtiezzi/ncbi/perouBam/SRR6677791_S//home/dtiezzi/ncbi/perouBam/SRR6677791_S.chr6region.2.fastq VALIDATION_STRINGENCY=SILENT
+
+get partially matching reads and turn fished sam into fastq at Wed Jul 21 17:33:31 2021
+
+
+combine chr6 reads with fished reads at Wed Jul 21 17:33:32 2021
+
