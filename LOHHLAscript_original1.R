@@ -724,31 +724,31 @@ if(mapping.step){
     # write.table(paste(samtoolsCMD, '\n', sep = ''), file = log.name, row.names=FALSE, col.names=FALSE, quote=FALSE, append = TRUE)
     # system(samtoolsCMD)
     
-    samtoolsCMD <- paste("samtools view ", BAMfile, " 6_apd_hap1 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
+    samtoolsCMD <- paste("samtools view ", BAMfile, " chr6_apd_hap1 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
 
-    samtoolsCMD <- paste("samtools view ", BAMfile, " 6_cox_hap2 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
+    samtoolsCMD <- paste("samtools view ", BAMfile, " chr6_cox_hap2 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
     
-    samtoolsCMD <- paste("samtools view ", BAMfile, " 6_dbb_hap3 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
+    samtoolsCMD <- paste("samtools view ", BAMfile, " chr6_dbb_hap3 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
     
-    samtoolsCMD <- paste("samtools view ", BAMfile, " 6_mann_hap4 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
+    samtoolsCMD <- paste("samtools view ", BAMfile, " chr6_mann_hap4 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
     
-    samtoolsCMD <- paste("samtools view ", BAMfile, " 6_mcf_hap5 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
+    samtoolsCMD <- paste("samtools view ", BAMfile, " chr6_mcf_hap5 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
     
-    samtoolsCMD <- paste("samtools view ", BAMfile, " 6_qbl_hap6 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
+    samtoolsCMD <- paste("samtools view ", BAMfile, " chr6_qbl_hap6 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
     
-    samtoolsCMD <- paste("samtools view ", BAMfile, " 6_ssto_hap7 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
+    samtoolsCMD <- paste("samtools view ", BAMfile, " chr6_ssto_hap7 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
     
