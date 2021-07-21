@@ -776,9 +776,9 @@ if(mapping.step){
     
     alignCMD <- paste(NOVODir, '/novoalign -d ', workDir, '/', full.patient, '.patient.hlaFasta.nix', ' -f ', regionDir,"/",BAMid,".chr6region.1.fastq", ' ', regionDir,"/",BAMid,".chr6region.2.fastq", ' -F STDFQ -R 0 -r All 9999 -o SAM -o FullNW 1> ', regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.sam ', '2> ', regionDir, '/', BAMid, '_BS_GL.chr6region.patient.reference.hlas.metrics', sep = '')
     write.table(alignCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
-    print(c("[INFO]" alignCMD))
+    print(c("[INFO]: ", alignCMD))
     system(alignCMD)
-
+    print(c("[INFO]: ", alignCMD, " DONE"))
     convertToBam <- paste("samtools view -bS -o ",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.bam'," ",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.sam' , sep="")
     write.table(convertToBam, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(convertToBam)
