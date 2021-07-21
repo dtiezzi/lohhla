@@ -782,6 +782,8 @@ if(mapping.step){
     write.table(convertToBam, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(convertToBam)
     
+print("[INFO] SortSam")
+
     # sort
     sortBAM <- paste("java -jar ",GATKDir,"/picard.jar SortSam"," I=",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.bam'," ","O=",regionDir,"/",BAMid,".chr6region.patient.reference.hlas.csorted.bam", " SORT_ORDER=coordinate",sep="")
     write.table(sortBAM, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
