@@ -1,0 +1,24 @@
+
+####################### 
+####### Inputs ######## 
+#######################
+full.patient	A1	
+workDir	./outDir	
+hlaPath	/home/dtiezzi/Softwares/lohhla/example-file/hlas	
+normalBAMfile	/home/dtiezzi/ncbi/perouBam/SRR6677795_S.bam	
+tumorBAMfile	/home/dtiezzi/ncbi/perouBam/SRR6677791_S.bam	
+HLAfastaLoc	/home/dtiezzi/Softwares/lohhla/data/example.patient.hlaFasta.fa	
+CopyNumLoc	/home/dtiezzi/Softwares/lohhla/example-file/solutions.txt	
+GATKDir	/home/dtiezzi/Softwares/picard/build/libs	
+NOVODir	/home/dtiezzi/Softwares/novocraft	
+
+
+generate patient reference fasta at Wed Jul 21 17:33:28 2021
+
+
+nix file for patient reference fasta at Wed Jul 21 17:33:28 2021
+
+/home/dtiezzi/Softwares/novocraft/novoindex ./outDir/A1.patient.hlaFasta.nix ./outDir/A1.patient.hlaFasta.fa
+
+create kmer file at Wed Jul 21 17:33:28 2021
+

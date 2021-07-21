@@ -11,11 +11,12 @@
 #alias samtools=/path/to/samtools
 #alias jellyfish=/path/to/jellyfish
 #alias bedtools=/path/to/bedtools
+NORMALBAM="SRR6677795_S.bam"
+TUMOURBAM="SRR6677791_S.bam"
 
-
-Rscript /home/dtiezzi/Softwares/lohhla/LOHHLAscript.R --patientId example --outputDir /out/correct-example-out \
- --normalBAMfile /home/dtiezzi/Softwares/lohhla/example-file/bam/example_BS_GL_sorted.bam \
- --tumorBAMfile /home/dtiezzi/Softwares/lohhla/example-file/bam/example_tumor_sorted.bam \
+Rscript /home/dtiezzi/Softwares/lohhla/LOHHLAscript.R --patientId A1 --outputDir ./outDir \
+ --normalBAMfile /home/dtiezzi/ncbi/perouBam/$NORMALBAM \
+ --tumorBAMfile /home/dtiezzi/ncbi/perouBam/$TUMOURBAM \
  --hlaPath /home/dtiezzi/Softwares/lohhla/example-file/hlas \
  --HLAfastaLoc /home/dtiezzi/Softwares/lohhla/data/example.patient.hlaFasta.fa  \
  --CopyNumLoc /home/dtiezzi/Softwares/lohhla/example-file/solutions.txt --mappingStep TRUE \
