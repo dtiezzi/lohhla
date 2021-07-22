@@ -778,7 +778,7 @@ if(mapping.step){
     write.table(alignCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     print(c("[INFO]: ", alignCMD))
     system(alignCMD)
-    print(c("[INFO]: ", alignCMD, " DONE"))
+    
     convertToBam <- paste("samtools view -bS -o ",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.bam'," ",regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.sam' , sep="")
     write.table(convertToBam, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(convertToBam)
@@ -806,7 +806,7 @@ if(mapping.step){
     system(indexBAM)
     
     hlaBAMfile <- paste(regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.csorted.noduplicates.filtered.bam', sep = '')
-    
+    print(c("[INFO]: ", hlaBAMfile, " running"))
     for (allele in hlaAlleles){
       
       write.table(paste('\nget HLA specific SAM for allele: ', allele,  ' at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
