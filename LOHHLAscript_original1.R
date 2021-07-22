@@ -813,9 +813,8 @@ if(mapping.step){
       
       getReads <- paste("samtools view -b -o ", regionDir,"/",BAMid,".temp.",allele, ".bam ", hlaBAMfile, " ", allele, sep = '')
       write.table(getReads, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
-      print(c("[INFO]: ", getReads, " running..."))
       system(getReads)
-      print(c("[INFO]: ", getReads, " DONE"))
+      
       
       samtoolsSort <- paste("samtools sort ",regionDir,"/",BAMid,".temp.",allele, ".bam"," -o ",regionDir,"/",BAMid,".type.",allele, ".bam",sep="")
       write.table(samtoolsSort, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
@@ -826,8 +825,10 @@ if(mapping.step){
       system(samtoolsIndex)  
       
       # and filter out reads that have too many events -- has to be done here because some reads map to multiple alleles
+      print(c("[INFO]: ", "Count Events", " running..."))
       passed.reads <- count.events(paste(regionDir, '/', BAMid, '.type.', allele, '.bam', sep = ''), n = numMisMatch)
       write.table(passed.reads, file = paste(regionDir, '/', BAMid, '.', allele, '.passed.reads.txt', sep = ''), sep = '\t', quote = FALSE, row.names = FALSE, col.names = FALSE)
+      print(c("[INFO]: ", passed.reads, " DONE"))
       extractCMD <- paste("java -jar ",GATKDir,"/picard.jar FilterSamReads ", "I=",  regionDir, '/', BAMid, '.type.', allele, '.bam' , " FILTER=includeReadList READ_LIST_FILE=", regionDir, "/", BAMid, '.', allele, ".passed.reads.txt", ' OUTPUT=', regionDir, '/', BAMid, '.type.', allele, '.filtered.bam', sep = '')
       write.table(extractCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
       system(extractCMD)
