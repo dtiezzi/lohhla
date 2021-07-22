@@ -22,7 +22,7 @@ Rscript /home/dtiezzi/Softwares/lohhla/LOHHLAscript.R --patientId A1 --outputDir
  --CopyNumLoc /home/dtiezzi/Softwares/lohhla/example-file/solutions.txt --mappingStep TRUE \
  --minCoverageFilter 10 --fishingStep TRUE --cleanUp FALSE  \
  --gatkDir /home/dtiezzi/Softwares/picard/build/libs/ \
- --novoDir /home/dtiezzi/Softwares/novocraft/
+ --novoDir /home/dtiezzi/Documents/lohhla_ubuntu14/novocraft/
 
 
 
