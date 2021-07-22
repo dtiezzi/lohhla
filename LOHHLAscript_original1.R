@@ -808,12 +808,14 @@ if(mapping.step){
     hlaBAMfile <- paste(regionDir, '/', BAMid, '.chr6region.patient.reference.hlas.csorted.noduplicates.filtered.bam', sep = '')
     
     for (allele in hlaAlleles){
-      print(c("[INFO]: ", allele, hlaAlleles))
+      
       write.table(paste('\nget HLA specific SAM for allele: ', allele,  ' at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
       
       getReads <- paste("samtools view -b -o ", regionDir,"/",BAMid,".temp.",allele, ".bam ", hlaBAMfile, " ", allele, sep = '')
       write.table(getReads, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
+      print(c("[INFO]: ", getReads, " running..."))
       system(getReads)
+      print(c("[INFO]: ", getReads, " DONE"))
       
       samtoolsSort <- paste("samtools sort ",regionDir,"/",BAMid,".temp.",allele, ".bam"," -o ",regionDir,"/",BAMid,".type.",allele, ".bam",sep="")
       write.table(samtoolsSort, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
