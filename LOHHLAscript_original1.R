@@ -828,11 +828,11 @@ if(mapping.step){
       print(c("[INFO]: ", "Count Events", " running..."))
       passed.reads <- count.events(paste(regionDir, '/', BAMid, '.type.', allele, '.bam', sep = ''), n = numMisMatch)
       write.table(passed.reads, file = paste(regionDir, '/', BAMid, '.', allele, '.passed.reads.txt', sep = ''), sep = '\t', quote = FALSE, row.names = FALSE, col.names = FALSE)
-      
+      print(c("[INFO]: ", passed.reads, " DONE"))
       extractCMD <- paste("java -jar ",GATKDir,"/picard.jar FilterSamReads ", "I=",  regionDir, '/', BAMid, '.type.', allele, '.bam' , " FILTER=includeReadList READ_LIST_FILE=", regionDir, "/", BAMid, '.', allele, ".passed.reads.txt", ' OUTPUT=', regionDir, '/', BAMid, '.type.', allele, '.filtered.bam', sep = '')
       write.table(extractCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
       system(extractCMD)
-      print(c("[INFO]: ", passed.reads, " DONE"))
+      
 
       samtoolsIndex <- paste("samtools index ",regionDir,"/",BAMid,".type.",allele, ".filtered.bam",sep="")
       write.table(samtoolsIndex, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
