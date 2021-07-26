@@ -905,6 +905,7 @@ if(runWithNormal){
 
   if(!override){
     print(c("[INFO] not override"))
+    print(c(workDir, tumorBAMfile, normalBAMfile))
     regionUniqMappedRegions <- getUniqMapReads(workDir = workDir, BAMs = c(tumorBAMfile, normalBAMfile), override = FALSE)
   }
   if(override){
