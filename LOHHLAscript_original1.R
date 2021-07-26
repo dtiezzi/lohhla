@@ -589,7 +589,7 @@ BAMfiles  <- c(tumorBAMfile, normalBAMfile)
 
 regions   <- sapply(BAMfiles, FUN =function(x) {return(unlist(strsplit(x, split = '.bam'))[1])})   ## contains both tumor and normal now
 print(c("[INFO]", regions, "##############################"))
-Sys.sleep(5)
+#Sys.sleep(5)
 
 hlaAlleles <- read.table(hlaPath, sep = '\t', header = FALSE, as.is = TRUE)
 if(ncol(hlaAlleles) == 3){
@@ -856,7 +856,12 @@ if(mapping.step){
 
 for (region in regions)
 {
-  print(c("[INFO]", regions, region))
+  
+
+  # /home/dtiezzi/ncbi/perouBam/example_tumor_sorted.bam 
+  # "/home/dtiezzi/ncbi/perouBam/example_tumor_sorted" 
+  # /home/dtiezzi/ncbi/perouBam/example_BS_GL_sorted.bam 
+  # "/home/dtiezzi/ncbi/perouBam/example_BS_GL_sorted"
   
   write.table(paste('\nget coverage of HLA alleles for region: ', region, ' at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
   
@@ -874,7 +879,8 @@ for (region in regions)
   #let's get pileup files for each bam
   for (BAMfile in c(BAMfiles))
   {      
-    
+    print(c("[INFO]", region))
+
     hlaAllele <- grep(pattern = 'hla', x = unlist(strsplit(BAMfile, split = '\\.')), value = TRUE)
 
     mpileupFile <- paste(workDir, '/', region,".",hlaAllele,".",type,".mpileup",sep="")
