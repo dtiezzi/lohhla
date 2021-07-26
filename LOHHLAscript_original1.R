@@ -864,10 +864,10 @@ for (region in regions)
   # "/home/dtiezzi/ncbi/perouBam/example_BS_GL_sorted"
   
   write.table(paste('\nget coverage of HLA alleles for region: ', region, ' at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
-  
+  print(c("[INFO]", region))
   regionDir <- paste(workDir, '/', region, sep = '')
   BAMfiles  <- grep('filtered.bam$', grep('type',list.files(regionDir),value=TRUE),value=TRUE)
-
+  print(c("[INFO]", region," DONE!"))
 
   if(paste(region, '.bam', sep = '') == normalBAMfile){
     type <- 'normal'
@@ -879,7 +879,6 @@ for (region in regions)
   #let's get pileup files for each bam
   for (BAMfile in c(BAMfiles))
   {      
-    print(c("[INFO]", region))
 
     hlaAllele <- grep(pattern = 'hla', x = unlist(strsplit(BAMfile, split = '\\.')), value = TRUE)
 
