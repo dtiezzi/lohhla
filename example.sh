@@ -18,12 +18,27 @@ Rscript /home/dtiezzi/Softwares/lohhla/LOHHLAscript.R --patientId A1 --outputDir
  --normalBAMfile /home/dtiezzi/ncbi/perouBam/$NORMALBAM \
  --tumorBAMfile /home/dtiezzi/ncbi/perouBam/$TUMOURBAM \
  --hlaPath /home/dtiezzi/Softwares/lohhla/example-file/hlas \
+ --HLAexonLoc /home/user/01_data/hla.dat \
  --HLAfastaLoc /home/dtiezzi/Softwares/lohhla/data/example.patient.hlaFasta.fa  \
  --CopyNumLoc /home/dtiezzi/Softwares/lohhla/example-file/solutions.txt --mappingStep TRUE \
  --minCoverageFilter 10 --fishingStep TRUE --cleanUp FALSE  \
  --gatkDir /home/dtiezzi/Softwares/picard/build/libs/ \
  --novoDir /home/dtiezzi/Documents/lohhla_ubuntu14/novocraft/
 
+# --outputDir /home/user/03_output/ \
+# 	--BAMDir /home/user/01_data/bam/ \
+# 	--hlaPath /home/user/01_data/hlas \
+# 	--gatkDir /opt/picard.jar \
+# 	--novoDir /opt/novocraft \
+# 	--HLAexonLoc /home/user/01_data/hla.dat \
+# 	--mappingStep TRUE \
+# 	--minCoverageFilter 10 \
+# 	--fishingStep TRUE \
+# 	--cleanUp FALSE \
+# 	--patientId example \
+# 	--normalBAMfile /home/user/01_data/bam/example_BS_GL_sorted.bam \
+# 	--HLAfastaLoc /home/user/01_data/example.patient.hlaFasta.fa \
+# 	--CopyNumLoc /home/user/01_data/solutions.txt
 
 
 

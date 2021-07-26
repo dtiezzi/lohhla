@@ -697,6 +697,7 @@ if(mapping.step){
     write.table(paste('\nextract HLA possible reads from BAM file at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
 
     # chr 6 and contigs
+    #chr6:29941260-29945884
     samtoolsCMD <- paste("samtools view -H ", BAMfile, " > " , regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
@@ -709,10 +710,11 @@ if(mapping.step){
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
 
-    
     samtoolsCMD <- paste("samtools view ", BAMfile, " chr6:31236526-31239869 >> ",regionDir,"/",BAMid,".chr6region.sam",sep="")
     write.table(samtoolsCMD, file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
     system(samtoolsCMD)
+
+    
 
     # mapped reads
     # samtoolsCMD <- paste("samtools view -F 4 ",BAMDir, '/', BAMfile, ' >> ', regionDir, '/', BAMid, ".chr6region.sam ", sep = "")
