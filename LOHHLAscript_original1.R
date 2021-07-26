@@ -867,18 +867,20 @@ for (region in regions)
   print(c("[INFO]", region))
   regionDir <- paste(workDir, '/', region, sep = '')
   BAMfiles  <- grep('filtered.bam$', grep('type',list.files(regionDir),value=TRUE),value=TRUE)
-  print(c("[INFO]", region," DONE!"))
+  
 
   if(paste(region, '.bam', sep = '') == normalBAMfile){
     type <- 'normal'
   } else{
     type <- 'tumor'
   }
+  print(c("[INFO]", region," DONE!"))
 
 
   #let's get pileup files for each bam
   for (BAMfile in c(BAMfiles))
   {      
+    print(c("[INFO]", region," NEXT!"))
 
     hlaAllele <- grep(pattern = 'hla', x = unlist(strsplit(BAMfile, split = '\\.')), value = TRUE)
 
