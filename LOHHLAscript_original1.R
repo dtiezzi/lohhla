@@ -424,7 +424,7 @@ getMisMatchPositionsPairwiseAlignment <- function(alignment, chunksize=60, retur
 ## Original code
 ## 
 getUniqMapReads <- function(workDir
-                            ,BAMDir
+                            ,BAMs
                             ,override=FALSE
                             ,overrideDir = NULL
 )
