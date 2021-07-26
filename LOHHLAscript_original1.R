@@ -899,15 +899,16 @@ for (region in regions)
 
 # also extract number of unique reads sequenced in tumor and normal
 if(runWithNormal){
-  print(c("[INFO]", runWithNormal, "NORMAL!!!!!!!!!!"))
   ## normalName <- regions[which(paste(BAMDir, '/', regions, '.bam', sep = '') == normalBAMfile)]
   normalName = gsub(".bam", "", normalBAMfile)
   
 
   if(!override){
+    print(c("[INFO] not override"))
     regionUniqMappedRegions <- getUniqMapReads(workDir = workDir, BAMs = c(tumorBAMfile, normalBAMfile), override = FALSE)
   }
   if(override){
+    print(c("[INFO] override"))
     regionUniqMappedRegions <- getUniqMapReads(workDir = workDir, BAMs= c(tumorBAMfile, normalBAMfile), override = TRUE, overrideDir = overrideDir) 
   }
 
