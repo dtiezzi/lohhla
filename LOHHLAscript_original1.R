@@ -854,6 +854,7 @@ if(mapping.step){
 
 for (region in regions)
 {
+  print(c("[INFO]", regions, region))
   
   write.table(paste('\nget coverage of HLA alleles for region: ', region, ' at ', date(), '\n', sep = ''), file = log.name, quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE)
   
