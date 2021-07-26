@@ -11,8 +11,10 @@
 #alias samtools=/path/to/samtools
 #alias jellyfish=/path/to/jellyfish
 #alias bedtools=/path/to/bedtools
-NORMALBAM="SRR6677795_S.bam"
-TUMOURBAM="SRR6677791_S.bam"
+#NORMALBAM="SRR6677795_S.bam"
+#TUMOURBAM="SRR6677791_S.bam"
+NORMALBAM="example_BS_GL_sorted.bam"
+TUMOURBAM="example_tumor_sorted.bam"
 
 Rscript /home/dtiezzi/Softwares/lohhla/LOHHLAscript.R --patientId A1 --outputDir ./outDir \
  --normalBAMfile /home/dtiezzi/ncbi/perouBam/$NORMALBAM \
