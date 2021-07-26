@@ -894,6 +894,7 @@ for (region in regions)
     
   }
   n = n+1
+  print("Summed n!!!!!!!!!!!!!!")
 }
 
 # also extract number of unique reads sequenced in tumor and normal
