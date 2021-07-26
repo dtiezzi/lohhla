@@ -853,7 +853,7 @@ if(mapping.step){
 ############################
 # get coverage for regions # 
 ############################
-
+n = 0
 for (region in regions)
 {
   
@@ -874,7 +874,7 @@ for (region in regions)
   } else{
     type <- 'tumor'
   }
-  print(c("[INFO]", region," DONE!"))
+  print(c("[INFO]", region," DONE!", n))
 
 
   #let's get pileup files for each bam
@@ -893,7 +893,7 @@ for (region in regions)
     system(cmd)
     
   }
-
+  n = n+1
 }
 
 # also extract number of unique reads sequenced in tumor and normal
