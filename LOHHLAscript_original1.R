@@ -588,6 +588,8 @@ BAMfiles  <- c(tumorBAMfile, normalBAMfile)
 ## }
 
 regions   <- sapply(BAMfiles, FUN =function(x) {return(unlist(strsplit(x, split = '.bam'))[1])})   ## contains both tumor and normal now
+print(c("[INFO]", regions, "##############################"))
+Sys.sleep(5)
 
 hlaAlleles <- read.table(hlaPath, sep = '\t', header = FALSE, as.is = TRUE)
 if(ncol(hlaAlleles) == 3){
