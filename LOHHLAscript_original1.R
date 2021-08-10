@@ -10,7 +10,7 @@
 
 ## rewritten to only take a normal BAM and tumor BAM, with no paths
 ## outputDir is the workDir
-
+## Mod by
 
 library(optparse)
 option_list = list(
@@ -423,6 +423,58 @@ getMisMatchPositionsPairwiseAlignment <- function(alignment, chunksize=60, retur
 
 ## Original code
 ## 
+## getUniqMapReads <- function(workDir
+##                             ,BAMDir
+##                             ,override=FALSE
+##                             ,overrideDir = NULL
+## )
+## {
+## 
+##   if(!override){
+##     outDir     <- paste(workDir, '/flagstat/', sep = '')
+##     if( !file.exists(outDir)){
+##       if( !dir.create(outDir, recursive = TRUE) ){
+##         stop(paste("Unable to create directory: ", outDir, "!\n", sep = ''))
+##       }
+##     }
+## 
+##     BAMs       <- list.files(BAMDir, pattern = 'bam$', full.names = TRUE)
+## 
+##     for(BAM in BAMs){
+##       region <- unlist(strsplit(BAM, split = '/'))[length(unlist(strsplit(BAM, split = '/')))]
+##       cmd    <- paste('samtools flagstat ', BAM, ' > ', outDir, region, '.proc.flagstat', sep = '')
+##       system(cmd)
+##     }  
+##   }    
+## 
+##   if(override){
+## 
+##     outDir <- overrideDir
+## 
+##   }
+##   
+##   flagStatRegions  <- list.files(outDir,pattern=".proc.flagstat$")
+##   if(length(flagStatRegions) == 0){
+##     stop('Either run flagstat or do not override.')
+##   }  
+##   
+##   UniqMapReads <- list()
+##   
+##   for (flagStatRegion in flagStatRegions)
+##   {
+##     
+##     UniqMapReads[[unlist(strsplit(flagStatRegion,split="\\."))[1]]] <-as.numeric(read.table(paste(outDir, '/', flagStatRegion,sep=""),stringsAsFactors=FALSE,header=FALSE,nrows =1)[,1])    
+##     
+##   }
+##   
+##   return(UniqMapReads)
+##   
+## }
+
+
+
+## re-write in order to take character vector of BAMs
+
 getUniqMapReads <- function(workDir
                             ,BAMs
                             ,override=FALSE
@@ -438,8 +490,6 @@ getUniqMapReads <- function(workDir
       }
     }
 
-    BAMs       <- list.files(BAMDir, pattern = 'bam$', full.names = TRUE)
-
     for(BAM in BAMs){
       region <- unlist(strsplit(BAM, split = '/'))[length(unlist(strsplit(BAM, split = '/')))]
       cmd    <- paste('samtools flagstat ', BAM, ' > ', outDir, region, '.proc.flagstat', sep = '')
@@ -453,7 +503,7 @@ getUniqMapReads <- function(workDir
 
   }
   
-  flagStatRegions  <- list.files(outDir,pattern=".proc.flagstat$")
+  flagStatRegions  <- list.files(outDir, pattern=".proc.flagstat$")
   if(length(flagStatRegions) == 0){
     stop('Either run flagstat or do not override.')
   }  
@@ -470,56 +520,6 @@ getUniqMapReads <- function(workDir
   return(UniqMapReads)
   
 }
-
-
-
-## re-write in order to take character vector of BAMs
-
-# getUniqMapReads <- function(workDir
-#                             ,BAMs
-#                             ,override=FALSE
-#                             ,overrideDir = NULL
-# )
-# {
-
-#   if(!override){
-#     outDir     <- paste(workDir, '/flagstat/', sep = '')
-#     if( !file.exists(outDir)){
-#       if( !dir.create(outDir, recursive = TRUE) ){
-#         stop(paste("Unable to create directory: ", outDir, "!\n", sep = ''))
-#       }
-#     }
-
-#     for(BAM in BAMs){
-#       region <- unlist(strsplit(BAM, split = '/'))[length(unlist(strsplit(BAM, split = '/')))]
-#       cmd    <- paste('samtools flagstat ', BAM, ' > ', outDir, region, '.proc.flagstat', sep = '')
-#       system(cmd)
-#     }  
-#   }    
-
-#   if(override){
-
-#     outDir <- overrideDir
-
-#   }
-  
-#   flagStatRegions  <- list.files(outDir, pattern=".proc.flagstat$")
-#   if(length(flagStatRegions) == 0){
-#     stop('Either run flagstat or do not override.')
-#   }  
-  
-#   UniqMapReads <- list()
-  
-#   for (flagStatRegion in flagStatRegions)
-#   {
-    
-#     UniqMapReads[[unlist(strsplit(flagStatRegion,split="\\."))[1]]] <-as.numeric(read.table(paste(outDir, '/', flagStatRegion,sep=""),stringsAsFactors=FALSE,header=FALSE,nrows =1)[,1])    
-    
-#   }
-  
-#   return(UniqMapReads)
-  
-# }
 
 
 
